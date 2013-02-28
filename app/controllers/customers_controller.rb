@@ -13,6 +13,7 @@ class CustomersController < ApplicationController
   end
 
   def create
+    sleep 1
     @object = Customer.new(params[:customer])
 
     respond_to do |format|
@@ -41,6 +42,7 @@ class CustomersController < ApplicationController
   end
 
   def update
+    sleep 1
     @object = Customer.find(params[:id])
     # sleep 2 
     respond_to do |format|

@@ -100,14 +100,18 @@ Ext.define('AM.controller.Customers', {
 			
 			// learnt from here
 			// http://www.sencha.com/forum/showthread.php?137580-ExtJS-4-Sync-and-success-failure-processing
+			form.mask("Loading....."); 
 			newObject.save({
 				success: function(record){
 					console.log("This is successful");
 					//  since the grid is backed by store, if store changes, it will be updated
 					store.load();
+					form.unmask(); 
 					win.close();
+					
 				},
 				failure: function( record, op){
+					form.unmask(); 
 					console.log("This is a failure");
 					var message  = op.request.scope.reader.jsonData["message"];
 					var errors = message['errors'];
